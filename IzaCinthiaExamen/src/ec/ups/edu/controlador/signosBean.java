@@ -9,8 +9,9 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.annotation.FacesConfig;
 import javax.inject.Named;
 
+import ec.ups.edu.ejb.CitaFacade;
 import ec.ups.edu.ejb.SignosVitalesFacade;
-
+import ec.ups.edu.modelos.Citas;
 import ec.ups.edu.modelos.SignosVitales;
 
 
@@ -22,16 +23,30 @@ public class signosBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@EJB
 	private SignosVitalesFacade ejSignosFacade;
+	@EJB
+	private CitaFacade ejCitaFacade;
 	private String precion;
 	private String frecuenciaC;
 	private String  frecuenciaR;
 	private String temperatura;
 	private String saturacion;
 	private String cita;
-	
+	private String fecha;
+	private String hora;
+	private int duracion;
 	private String alergia;
 	private String enfermedades;
 	private String sintomas;
+	
+	
+	//cliente
+	
+	private String cedula;
+	private String nombre;
+	private String apellidos;
+	private String telefono;
+	private String direccion;
+	
 	private List<SignosVitales>listSignos;
 	@PostConstruct
 	public void init() {	
@@ -108,6 +123,65 @@ public class signosBean implements Serializable {
 	public void setSintomas(String sintomas) {
 		this.sintomas = sintomas;
 	}
+	
+	
+	public CitaFacade getEjCitaFacade() {
+		return ejCitaFacade;
+	}
+	public void setEjCitaFacade(CitaFacade ejCitaFacade) {
+		this.ejCitaFacade = ejCitaFacade;
+	}
+	public String getFecha() {
+		return fecha;
+	}
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+	public String getHora() {
+		return hora;
+	}
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+	public int getDuracion() {
+		return duracion;
+	}
+	public void setDuracion(int duracion) {
+		this.duracion = duracion;
+	}
+	
+	
+	
+	public String getCedula() {
+		return cedula;
+	}
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getApellidos() {
+		return apellidos;
+	}
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+	public String getTelefono() {
+		return telefono;
+	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
 	public String add() {
 		System.out.println("Presion"+this.precion);
 		System.out.println("Frecuencia c"+this.frecuenciaC);
@@ -117,6 +191,15 @@ public class signosBean implements Serializable {
 		System.out.println("sintomas"+this.sintomas);
 		System.out.println("enferm"+this.enfermedades);
 		System.out.println("Aler"+this.alergia);
+		System.out.println("Cita recuperada");
+		Citas c=  new Citas();
+		int ci= Integer.valueOf(cita);
+		c=ejCitaFacade.find(ci);
+		System.out.println("cita"+c.toString());
+		this.cita=String.valueOf(c.getId());
+		this.fecha=c.getFecha();
+		this.duracion=c.getDuracion();
+		this.hora=c.getHora();
 		return null;
 	}
 	
