@@ -9,10 +9,16 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.annotation.FacesConfig;
 import javax.inject.Named;
 
+import org.eclipse.persistence.annotations.PrivateOwned;
+import org.jboss.weld.context.ejb.Ejb;
+
 import ec.ups.edu.ejb.CitaFacade;
+import ec.ups.edu.ejb.EnfermedadesPreviasFacade;
 import ec.ups.edu.ejb.SignosVitalesFacade;
+import ec.ups.edu.ejb.SintomasFacade;
 import ec.ups.edu.modelos.Citas;
 import ec.ups.edu.modelos.SignosVitales;
+import ec.ups.edu.modelos.Sintomas;
 
 
 
@@ -25,6 +31,13 @@ public class signosBean implements Serializable {
 	private SignosVitalesFacade ejSignosFacade;
 	@EJB
 	private CitaFacade ejCitaFacade;
+	@EJB
+	private SignosVitalesFacade ejbFacade;
+	@EJB
+	private SintomasFacade ejbSintomas;
+	@EJB
+	private EnfermedadesPreviasFacade ejbEnfermedadesFacade;
+	
 	private String precion;
 	private String frecuenciaC;
 	private String  frecuenciaR;
@@ -206,6 +219,9 @@ public class signosBean implements Serializable {
 		
 		
 		return null;
+	}
+	private void agregar () {
+		
 	}
 	
 }
