@@ -61,53 +61,52 @@
 			<div class="form-group mx-sm-3 mb-2">
 				<div class="col-lg-2">
 					Presion:
-					<h:inputText size="10" value="#{signosVitalesBean}"
+					<h:inputText size="10" value="#{signosBean.precion}"
 						class="form-control" />
 				</div>
 				&nbsp;
 				&nbsp;
 			</div>
-
+	<br />
 			<div class="form-group mx-sm-3 mb-2">
 				<div class="col-lg-2">
 					Frecuencia Cardiaca:
-					<h:inputText size="10" value="#{signosVitalesBean.frecuenciaC}"
+					<h:inputText size="10" value="#{signosBean.frecuenciaC}"
 						class="form-control" />
 				</div>
-				&nbsp;
-				&nbsp;
+				<br />
 			</div>
 			
 			<div class="form-group mx-sm-3 mb-2">
 				<div class="col-lg-2">
 					Frecuencia Respiratoria:
-					<h:inputText size="10" value="#{signosVitalesBean.frecuenciaR}"
+					<h:inputText size="10" value="#{signosBean.frecuenciaR}"
 						class="form-control" />
 				</div>
 				&nbsp;
 				&nbsp;
 			</div>
-			
+				<br />
 			<div class="form-group mx-sm-3 mb-2">
 				<div class="col-lg-2">
 					Temperatura:
-					<h:inputText size="10" value="#{signosVitalesBean.temperatura}"
+					<h:inputText size="10" value="#{signosBean.temperatura}"
 						class="form-control" />
 				</div>
 				&nbsp;
 				&nbsp;
 			</div>
-			
+				<br />
 			<div class="form-group mx-sm-3 mb-2">
 				<div class="col-lg-2">
 					Saturacion:
-					<h:inputText size="10" value="#{signosVitalesBean.saturacion}"
+					<h:inputText size="10" value="#{signosBean.saturacion}"
 						class="form-control" />
 				</div>
 				&nbsp;
 				&nbsp;
 			</div>
-			
+				<br />
 		
 		<!--  <h:dataTable value="#{facturaCabeceraBean.listRow}" var="fd"
 			styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaImpar"
@@ -155,7 +154,7 @@
 				  <f:convertNumber pattern="#0.00" /></h:outputText>
 			</ul>
 -->
-		<h:commandButton value="Registrar" action="#{signosVitalesBean.add}" class="btn btn-danger btn block"/>
+		<h:commandButton value="Registrar" action="#{signosBean.add}" class="btn btn-danger btn block"/>
 
 		<!-- <h:commandButton value="Iva" action="#{facturaDetaBean.calcularIva()}" />
 			-->

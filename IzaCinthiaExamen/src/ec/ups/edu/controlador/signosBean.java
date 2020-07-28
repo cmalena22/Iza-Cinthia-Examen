@@ -5,29 +5,39 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.annotation.FacesConfig;
+import javax.inject.Named;
 
-import ec.ups.edu.ejb.PacienteFacade;
 import ec.ups.edu.ejb.SignosVitalesFacade;
+
 import ec.ups.edu.modelos.SignosVitales;
 
-public class SignosVitalesBean implements Serializable {
+
+
+@FacesConfig(version = FacesConfig.Version.JSF_2_3)
+@Named
+@SessionScoped
+public class signosBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@EJB
-	private SignosVitalesFacade ejbSignosVitalesCabecera;
+	private SignosVitalesFacade ejSignosFacade;
 	private String precion;
 	private String frecuenciaC;
 	private String  frecuenciaR;
 	private String temperatura;
 	private String saturacion;
-	
-	private List<SignosVitales>listaSignos;
-	
+	private List<SignosVitales>listSignos;
 	@PostConstruct
 	public void init() {	
-		listaSignos=ejbSignosVitalesCabecera.findAll();
-		
+		listSignos=ejSignosFacade.findAll();
 	}
-		
+	public SignosVitalesFacade getEjSignosFacade() {
+		return ejSignosFacade;
+	}
+	public void setEjSignosFacade(SignosVitalesFacade ejSignosFacade) {
+		this.ejSignosFacade = ejSignosFacade;
+	}
 	public String getPrecion() {
 		return precion;
 	}
@@ -58,14 +68,20 @@ public class SignosVitalesBean implements Serializable {
 	public void setSaturacion(String saturacion) {
 		this.saturacion = saturacion;
 	}
+	public List<SignosVitales> getListSignos() {
+		return listSignos;
+	}
+	public void setListSignos(List<SignosVitales> listSignos) {
+		this.listSignos = listSignos;
+	}
 	
 	public String add() {
-		System.out.println("precion"+this.precion);
-		System.out.println("frecuencia c"+this.frecuenciaC);
-		System.out.println("frecuencia r"+this.frecuenciaR);
-		System.out.println("tem"+this.temperatura);
-		System.out.println("saturacion"+this.saturacion);
+		System.out.println("Presion"+this.precion);
+		System.out.println("Frecuencia c"+this.frecuenciaC);
+		System.out.println("Frreciencia R0"+this.frecuenciaR);
+		System.out.println("tempe"+this.temperatura);
+		System.out.println("Saturacion"+this.saturacion);
 		return null;
-		
 	}
+	
 }

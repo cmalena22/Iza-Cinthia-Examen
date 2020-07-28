@@ -4,7 +4,7 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-	<title>Factura</title>
+	<title>Citas</title>
 
 	<link rel="stylesheet"
 		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -59,8 +59,8 @@
 
 			<div class="form-group mx-sm-3 mb-2">
 				<div class="col-lg-2">
-					Nombre:
-					<h:inputText size="10" value="#{facturaCabeceraBean.cliente}"
+					Fecha:
+					<h:inputText size="10" value="#{pacienteBean.fecha}"
 						class="form-control" />
 				</div>
 				&nbsp;
@@ -72,8 +72,8 @@
 			<!-- /////////////////////////////////  Factura Detalle  /////////////////////////////////////////-->
 			<div class="form-group mx-sm-3 mb-2">
 				<div class="col-lg-2">
-					Cantidad:
-					<h:inputText size="10" value="#{facturaCabeceraBean.cantidad}"
+					Hora:
+					<h:inputText size="10" value="#{pacienteBean.hora}"
 						class="form-control" />
 				</div>
 			</div>
@@ -81,64 +81,45 @@
 			&nbsp;
 			<div class="form-group mx-sm-3 mb-2">
 				<div class="col-lg-2">
-					Descripcion:
-					<h:inputText size="10" value="#{facturaCabeceraBean.producto}"
+					Duracion:
+					<h:inputText size="10" value="#{pacienteBean.duracion}"
 						class="form-control" />
 				</div>
 			</div>
+			
+				<h:selectOneMenu value="#{pacienteBean.paciente}"  class="form-control" >
+				<f:selectItems name="item" value="#{pacienteBean.listPaciente}"
+					class="form-control" />
+				</h:selectOneMenu>
 		</div>
-		<h:commandButton value="Buscar" action="#{facturaCabeceraBean.agregar}" class="btn btn-danger btn block"/>
-		
 	&nbsp;
 	&nbsp;
 	
-		<h:dataTable value="#{facturaCabeceraBean.listRow}" var="fd"
-			styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaImpar"
-			class="table table-hover">
-			<h:column>
-				<f:facet name="header">Cantidad</f:facet>
-				<h:outputText value="#{fd.cantidad}" size="10" />
-			</h:column>
-
-
-			<h:column>
-				<f:facet name="header">Producto Detalle Nombre</f:facet>
-				<h:outputText value="#{fd.descripcion} " size="10" />
-			</h:column>
-
-			<h:column>
-				<f:facet name="header">V. Unitario</f:facet>
-				<h:outputText value="#{fd.preciounit}" size="10" />
-			</h:column>
-
-
-			<h:column>
-				<f:facet name="header">Subtotal</f:facet>
-						
-				  <h:outputText value="#{fd.subtotalFacDet}" size="10"  >
-				  <f:convertNumber pattern="#0.00" /></h:outputText>
-			</h:column>
+	
+	
 			
-		</h:dataTable>
-
-<br></br>
-			<ul>
-				<f:facet name="header">Subtotal</f:facet>						
-				  <h:outputText value="#{facturaCabeceraBean.total}" size="10"  >
-				  <f:convertNumber pattern="#0.00" /></h:outputText>
-			</ul>
-			<ul>
-				<f:facet name="header">Iva</f:facet>						
-				  <h:outputText value="#{facturaCabeceraBean.subtotal}" size="10"  >
-				  <f:convertNumber pattern="#0.00" /></h:outputText>
-			</ul>
-<ul>
-				<f:facet name="header">Total</f:facet>						
-				  <h:outputText value="#{facturaCabeceraBean.to}" size="10"  >
-				  <f:convertNumber pattern="#0.00" /></h:outputText>
-			</ul>
-
-		<h:commandButton value="Facturar" action="#{facturaCabeceraBean.add}" class="btn btn-danger btn block"/>
+		<h:form>
+	
+		<div class="form-group">
+			<label class="col-lg-6 control-label">Nombre: <br></br>
+			<div class="col-lg-4">
+			<h:outputText size="10" value="#{pacienteBean.nombre}" class="form-control" /></div></label>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-6 control-label">Apellido: <br></br>
+			<div class="col-lg-4">
+			<h:outputText size="10" value="#{pacienteBean.apellidos}" class="form-control" /></div></label>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-6 control-label">Direccion: <br></br>
+			<div class="col-lg-4">
+			<h:outputText size="10" value="#{pacienteBean.direccion}" class="form-control" /></div></label>
+		</div>
+		
+		
+		
+	</h:form>
+		<h:commandButton value="Registrar" action="#{pacienteBean.add}" class="btn btn-danger btn block"/>
 
 		<!-- <h:commandButton value="Iva" action="#{facturaDetaBean.calcularIva()}" />
 			-->
