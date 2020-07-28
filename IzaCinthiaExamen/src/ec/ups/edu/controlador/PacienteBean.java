@@ -9,8 +9,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.annotation.FacesConfig;
 import javax.inject.Named;
 
+import ec.ups.edu.ejb.CitaFacade;
 import ec.ups.edu.ejb.PacienteFacade;
 import ec.ups.edu.ejb.SignosVitalesFacade;
+import ec.ups.edu.modelos.Citas;
 import ec.ups.edu.modelos.Paciente;
 
 @FacesConfig(version = FacesConfig.Version.JSF_2_3)
@@ -22,6 +24,8 @@ public class PacienteBean implements Serializable {
 	private PacienteFacade ejbPacienteCabecera;
 	@EJB
 	private SignosVitalesFacade ejbSignosVitales;
+	@EJB
+	private CitaFacade ejbCitaFacade;
 	private String fecha;
 	private String hora;
 	private int duracion;
@@ -36,6 +40,23 @@ public class PacienteBean implements Serializable {
 	public void init() {	
 		listPaciente=ejbPacienteCabecera.findAll();
 	}
+
+	
+	
+	
+	public CitaFacade getEjbCitaFacade() {
+		return ejbCitaFacade;
+	}
+
+
+
+
+	public void setEjbCitaFacade(CitaFacade ejbCitaFacade) {
+		this.ejbCitaFacade = ejbCitaFacade;
+	}
+
+
+
 
 	public String getPaciente() {
 		return paciente;
@@ -143,17 +164,27 @@ public class PacienteBean implements Serializable {
 		System.out.println("Duracion"+this.duracion);
 		System.out.println("paciente"+this.paciente);
 		buscarPa();
+		this.nombre=buscarPa().getNombre();
+		this.apellidos=buscarPa().getApellidos();
+		this.direccion=buscarPa().getDireccion();
+		
 		return null;
 		
 	}
 	
 	public Paciente buscarPa() {
-		System.out.println("nombre"+this.nombre);
-		System.out.println("apellido"+this.apellidos);
 		Paciente pa= new Paciente();
 		pa=ejbPacienteCabecera.find(paciente);
 		System.out.println("busque "+pa.toString());
 		return pa;
+		
+	}
+	
+	public String rePa() {
+		
+		Citas ci= new Citas(this.fecha,this.hora,this.duracion,buscarPa());
+		ejbCitaFacade.create(ci);
+		return null;
 		
 	}
 }

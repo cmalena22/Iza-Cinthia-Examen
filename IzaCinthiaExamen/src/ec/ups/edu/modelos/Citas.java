@@ -94,8 +94,7 @@ public class Citas implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Citas [id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", duracion=" + duracion + ", paciente="
-				+ paciente + "]";
+		return String.valueOf (id) ;
 	}
    
 }

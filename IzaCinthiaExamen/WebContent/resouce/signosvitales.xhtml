@@ -106,6 +106,22 @@
 				&nbsp;
 				&nbsp;
 			</div>
+			
+			
+				<div class="col-lg-2">
+					Nombre Alergia:
+					<h:inputText size="10" value="#{signosBean.saturacion}"
+						class="form-control" />
+				</div>
+				&nbsp;
+				&nbsp;
+		
+			
+			<h:selectOneMenu value="#{signosBean.cita}"
+				class="form-control">
+				<f:selectItems name="item" value="#{citasBean.listaCi}"
+					class="form-control" />
+			</h:selectOneMenu>
 				<br />
 		
 		<!--  <h:dataTable value="#{facturaCabeceraBean.listRow}" var="fd"

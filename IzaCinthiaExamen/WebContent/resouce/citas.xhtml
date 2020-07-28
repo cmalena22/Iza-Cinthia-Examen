@@ -51,11 +51,11 @@
 
 </h:head>
 <h:body>
-<br></br>
+	<br></br>
 
 	<h:form class="form-inline">
 		<div class="form-group mb-2">
-		<!-- ////////////////////////////////  Factura Cabecera  /////////////////////////////////////////////-->
+			<!-- ////////////////////////////////  Factura Cabecera  /////////////////////////////////////////////-->
 
 			<div class="form-group mx-sm-3 mb-2">
 				<div class="col-lg-2">
@@ -63,12 +63,10 @@
 					<h:inputText size="10" value="#{pacienteBean.fecha}"
 						class="form-control" />
 				</div>
-				&nbsp;
-				&nbsp;
+				&nbsp; &nbsp;
 			</div>
-			
-			&nbsp;
-			&nbsp;
+
+			&nbsp; &nbsp;
 			<!-- /////////////////////////////////  Factura Detalle  /////////////////////////////////////////-->
 			<div class="form-group mx-sm-3 mb-2">
 				<div class="col-lg-2">
@@ -77,8 +75,7 @@
 						class="form-control" />
 				</div>
 			</div>
-			&nbsp;
-			&nbsp;
+			&nbsp; &nbsp;
 			<div class="form-group mx-sm-3 mb-2">
 				<div class="col-lg-2">
 					Duracion:
@@ -86,41 +83,52 @@
 						class="form-control" />
 				</div>
 			</div>
-			
-				<h:selectOneMenu value="#{pacienteBean.paciente}"  class="form-control" >
+
+			<h:selectOneMenu value="#{pacienteBean.paciente}"
+				class="form-control">
 				<f:selectItems name="item" value="#{pacienteBean.listPaciente}"
 					class="form-control" />
-				</h:selectOneMenu>
+			</h:selectOneMenu>
 		</div>
 	&nbsp;
 	&nbsp;
 	
-	
+		<div>
 	
 			
-		<h:form>
-	
-		<div class="form-group">
-			<label class="col-lg-6 control-label">Nombre: <br></br>
-			<div class="col-lg-4">
-			<h:outputText size="10" value="#{pacienteBean.nombre}" class="form-control" /></div></label>
-		</div>
-		<div class="form-group">
-			<label class="col-lg-6 control-label">Apellido: <br></br>
-			<div class="col-lg-4">
-			<h:outputText size="10" value="#{pacienteBean.apellidos}" class="form-control" /></div></label>
-		</div>
-		<div class="form-group">
-			<label class="col-lg-6 control-label">Direccion: <br></br>
-			<div class="col-lg-4">
-			<h:outputText size="10" value="#{pacienteBean.direccion}" class="form-control" /></div></label>
-		</div>
 		
-		
-		
-	</h:form>
-		<h:commandButton value="Registrar" action="#{pacienteBean.add}" class="btn btn-danger btn block"/>
 
+			<div class="form-group">
+				<label class="col-lg-6 control-label">Nombre: <br></br>
+					<div class="col-lg-4">
+						<h:outputText size="10" value="#{pacienteBean.nombre}"
+							class="form-control" />
+					</div></label>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-6 control-label">Apellido: <br></br>
+					<div class="col-lg-4">
+						<h:outputText size="10" value="#{pacienteBean.apellidos}"
+							class="form-control" />
+					</div></label>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-6 control-label">Direccion: <br></br>
+					<div class="col-lg-4">
+						<h:outputText size="10" value="#{pacienteBean.direccion}"
+							class="form-control" />
+					</div></label>
+			</div>
+
+
+
+	
+			</div>
+		<h:commandButton value="Buscar" action="#{pacienteBean.add}"
+			class="btn btn-danger btn block" />
+				
+		<h:commandButton value="Registrar" action="#{pacienteBean.rePa}"
+				class="btn btn-danger btn block" />
 		<!-- <h:commandButton value="Iva" action="#{facturaDetaBean.calcularIva()}" />
 			-->
 

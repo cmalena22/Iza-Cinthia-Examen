@@ -27,6 +27,7 @@ public class signosBean implements Serializable {
 	private String  frecuenciaR;
 	private String temperatura;
 	private String saturacion;
+	private String cita;
 	private List<SignosVitales>listSignos;
 	@PostConstruct
 	public void init() {	
@@ -75,6 +76,13 @@ public class signosBean implements Serializable {
 		this.listSignos = listSignos;
 	}
 	
+	
+	public String getCita() {
+		return cita;
+	}
+	public void setCita(String cita) {
+		this.cita = cita;
+	}
 	public String add() {
 		System.out.println("Presion"+this.precion);
 		System.out.println("Frecuencia c"+this.frecuenciaC);
