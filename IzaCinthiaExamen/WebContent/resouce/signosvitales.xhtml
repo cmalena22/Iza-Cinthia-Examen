@@ -110,12 +110,21 @@
 			
 				<div class="col-lg-2">
 					Nombre Alergia:
-					<h:inputText size="10" value="#{signosBean.saturacion}"
+					<h:inputText size="10" value="#{signosBean.alergia}"
 						class="form-control" />
 				</div>
 				&nbsp;
 				&nbsp;
-		
+		<div class="col-lg-2">
+					Enfermedades:
+					<h:inputText size="10" value="#{signosBean.enfermedades}"
+						class="form-control" />
+				</div>
+				<div class="col-lg-2">
+					Sintomas:
+					<h:inputText size="10" value="#{signosBean.sintomas}"
+						class="form-control" />
+				</div>	
 			
 			<h:selectOneMenu value="#{signosBean.cita}"
 				class="form-control">

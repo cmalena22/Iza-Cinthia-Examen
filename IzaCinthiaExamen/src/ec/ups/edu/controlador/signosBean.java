@@ -28,6 +28,10 @@ public class signosBean implements Serializable {
 	private String temperatura;
 	private String saturacion;
 	private String cita;
+	
+	private String alergia;
+	private String enfermedades;
+	private String sintomas;
 	private List<SignosVitales>listSignos;
 	@PostConstruct
 	public void init() {	
@@ -83,12 +87,36 @@ public class signosBean implements Serializable {
 	public void setCita(String cita) {
 		this.cita = cita;
 	}
+	
+	
+	
+	public String getAlergia() {
+		return alergia;
+	}
+	public void setAlergia(String alergia) {
+		this.alergia = alergia;
+	}
+	public String getEnfermedades() {
+		return enfermedades;
+	}
+	public void setEnfermedades(String enfermedades) {
+		this.enfermedades = enfermedades;
+	}
+	public String getSintomas() {
+		return sintomas;
+	}
+	public void setSintomas(String sintomas) {
+		this.sintomas = sintomas;
+	}
 	public String add() {
 		System.out.println("Presion"+this.precion);
 		System.out.println("Frecuencia c"+this.frecuenciaC);
 		System.out.println("Frreciencia R0"+this.frecuenciaR);
 		System.out.println("tempe"+this.temperatura);
 		System.out.println("Saturacion"+this.saturacion);
+		System.out.println("sintomas"+this.sintomas);
+		System.out.println("enferm"+this.enfermedades);
+		System.out.println("Aler"+this.alergia);
 		return null;
 	}
 	
