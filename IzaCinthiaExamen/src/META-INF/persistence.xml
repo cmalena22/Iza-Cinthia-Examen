@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-	<persistence-unit name="IzaCinthiaExamen">
+	<persistence-unit name="IzaCinthiaExamen" transaction-type="JTA">
+		<jta-data-source>jdbc/_ejemplo</jta-data-source>
 		<class>ec.ups.edu.modelos.Paciente</class>
+		<class>ec.ups.edu.modelos.Citas</class>
+		<class>ec.ups.edu.modelos.SignosVitales</class>
+		<class>ec.ups.edu.modelos.Sintomas</class>
+		<class>ec.ups.edu.modelos.Alergias</class>
+		<class>ec.ups.edu.modelos.EnfermedadesPrevias</class>
+		<properties>
+			<property name="javax.persistence.schema-generation.database.action" value="create"/>
+		</properties>
 	</persistence-unit>
 </persistence>

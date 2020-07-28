@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Factura</title>
+
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		crossorigin="anonymous"></link>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+
+
+	<style>
+.tabla {
+	border-collaprose: collapse;
+}
+
+.cabeceraTabla {
+	text-align: center;
+	background: none repeat scroll 0 0 #E5E5E5;
+	border-bottom: 1px solid #BBBBBB;
+	proadding: 8px;
+}
+
+.filapar {
+	text-align: center;
+	background: none repeat scroll 0 0 #FFFFFFF;
+	border-topro: 1px solid #BBBBBB;
+}
+
+.filaImpar {
+	text-align: center;
+	background: none repeat scroll 0 0 #F9F9F9;
+	border-topro: 1px solid #BBBBBB;
+}
+</style>
+
+
+</h:head>
+<h:body>
+<br></br>
+
+	<h:form class="form-inline">
+		<div class="form-group mb-2">
+		<!-- ////////////////////////////////  Factura Cabecera  /////////////////////////////////////////////-->
+
+
+			<div class="form-group mx-sm-3 mb-2">
+				<div class="col-lg-2">
+					Presion:
+					<h:inputText size="10" value="#{signosVitalesBean}"
+						class="form-control" />
+				</div>
+				&nbsp;
+				&nbsp;
+			</div>
+
+			<div class="form-group mx-sm-3 mb-2">
+				<div class="col-lg-2">
+					Frecuencia Cardiaca:
+					<h:inputText size="10" value="#{signosVitalesBean.frecuenciaC}"
+						class="form-control" />
+				</div>
+				&nbsp;
+				&nbsp;
+			</div>
+			
+			<div class="form-group mx-sm-3 mb-2">
+				<div class="col-lg-2">
+					Frecuencia Respiratoria:
+					<h:inputText size="10" value="#{signosVitalesBean.frecuenciaR}"
+						class="form-control" />
+				</div>
+				&nbsp;
+				&nbsp;
+			</div>
+			
+			<div class="form-group mx-sm-3 mb-2">
+				<div class="col-lg-2">
+					Temperatura:
+					<h:inputText size="10" value="#{signosVitalesBean.temperatura}"
+						class="form-control" />
+				</div>
+				&nbsp;
+				&nbsp;
+			</div>
+			
+			<div class="form-group mx-sm-3 mb-2">
+				<div class="col-lg-2">
+					Saturacion:
+					<h:inputText size="10" value="#{signosVitalesBean.saturacion}"
+						class="form-control" />
+				</div>
+				&nbsp;
+				&nbsp;
+			</div>
+			
+		
+		<!--  <h:dataTable value="#{facturaCabeceraBean.listRow}" var="fd"
+			styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaImpar"
+			class="table table-hover">
+			<h:column>
+				<f:facet name="header">Cantidad</f:facet>
+				<h:outputText value="#{fd.cantidad}" size="10" />
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">Producto Detalle Nombre</f:facet>
+				<h:outputText value="#{fd.descripcion} " size="10" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">V. Unitario</f:facet>
+				<h:outputText value="#{fd.preciounit}" size="10" />
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">Subtotal</f:facet>
+						
+				  <h:outputText value="#{fd.subtotalFacDet}" size="10"  >
+				  <f:convertNumber pattern="#0.00" /></h:outputText>
+			</h:column>
+			
+		</h:dataTable>
+
+<br></br>
+			<ul>
+				<f:facet name="header">Subtotal</f:facet>						
+				  <h:outputText value="#{facturaCabeceraBean.total}" size="10"  >
+				  <f:convertNumber pattern="#0.00" /></h:outputText>
+			</ul>
+			<ul>
+				<f:facet name="header">Iva</f:facet>						
+				  <h:outputText value="#{facturaCabeceraBean.subtotal}" size="10"  >
+				  <f:convertNumber pattern="#0.00" /></h:outputText>
+			</ul>
+<ul>
+				<f:facet name="header">Total</f:facet>						
+				  <h:outputText value="#{facturaCabeceraBean.to}" size="10"  >
+				  <f:convertNumber pattern="#0.00" /></h:outputText>
+			</ul>
+-->
+		<h:commandButton value="Registrar" action="#{signosVitalesBean.add}" class="btn btn-danger btn block"/>
+
+		<!-- <h:commandButton value="Iva" action="#{facturaDetaBean.calcularIva()}" />
+			-->
+</div>
+		
+	</h:form>
+</h:body>
+</html>
