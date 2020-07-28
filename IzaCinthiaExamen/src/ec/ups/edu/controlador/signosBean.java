@@ -200,6 +200,11 @@ public class signosBean implements Serializable {
 		this.fecha=c.getFecha();
 		this.duracion=c.getDuracion();
 		this.hora=c.getHora();
+		this.nombre=c.getPaciente().getNombre();
+		this.apellidos=c.getPaciente().getApellidos();
+		this.direccion=c.getPaciente().getDireccion();
+		
+		
 		return null;
 	}
 	
