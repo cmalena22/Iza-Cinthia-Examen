@@ -122,32 +122,35 @@
 				class="form-control">
 				<f:selectItems name="item" value="#{citasBean.listaCi}"
 					class="form-control" />
+					<f:ajax event="change" listener="#{signosBean.add}"
+					render="idList2 idList3 idList4 idList5
+					idList6 idList7
+					idList8 	
+					" execute="@this" />
 			</h:selectOneMenu>
 				<br></br>
 		
 		<div>
-	
-			
 		<br></br>
 
 			<div class="form-group">
 				<label class="col-lg-6 control-label">Nombre: <br></br>
 					<div class="col-lg-4">
-						<h:outputText size="10" value="#{signosBean.nombre}"
+						<h:outputText id="idList2" size="10" value="#{signosBean.nombre}"
 							class="form-control" />
 					</div></label>
 			</div>
 			<div class="form-group">
 				<label class="col-lg-6 control-label">Apellido: <br></br>
 					<div class="col-lg-4">
-						<h:outputText size="10" value="#{signosBean.apellidos}"
+						<h:outputText id="idList3" size="10" value="#{signosBean.apellidos}"
 							class="form-control" />
 					</div></label>
 			</div>
 			<div class="form-group">
 				<label class="col-lg-6 control-label">Direccion: <br></br>
 					<div class="col-lg-4">
-						<h:outputText size="10" value="#{signosBean.direccion}"
+						<h:outputText id="idList4" size="10" value="#{signosBean.direccion}"
 							class="form-control" />
 					</div></label>
 			</div>
@@ -155,43 +158,33 @@
 			<div class="form-group">
 				<label class="col-lg-6 control-label">Codigo Cita: <br></br>
 					<div class="col-lg-4">
-						<h:outputText size="10" value="#{signosBean.cita}"
+						<h:outputText id="idList5" size="10" value="#{signosBean.cita}"
 							class="form-control" />
 					</div></label>
 			</div>
 			<div class="form-group">
 				<label class="col-lg-6 control-label">Fecha: <br></br>
 					<div class="col-lg-4">
-						<h:outputText size="10" value="#{signosBean.fecha}"
+						<h:outputText id="idList6" size="10" value="#{signosBean.fecha}"
 							class="form-control" />
 					</div></label>
 			</div>
 			<div class="form-group">
 				<label class="col-lg-6 control-label">Hora: <br></br>
 					<div class="col-lg-4">
-						<h:outputText size="10" value="#{signosBean.hora}"
+						<h:outputText id="idList7" size="10" value="#{signosBean.hora}"
 							class="form-control" />
 					</div></label>
 			</div>
 		<div class="form-group">
 				<label class="col-lg-6 control-label">Duracion: <br></br>
 					<div class="col-lg-4">
-						<h:outputText size="10" value="#{signosBean.duracion}"
+						<h:outputText id="idList8" size="10" value="#{signosBean.duracion}"
 							class="form-control" />
 					</div></label>
 			</div>
-
-
-
-	
-			</div>
-		
-		
-		
-		
-		
-		<h:commandButton value="Buscar" action="#{signosBean.add}" class="btn btn-danger btn block"/>
-		<h:commandButton value="Registrar" action="#{signosBean.add}" class="btn btn-danger btn block"/>
+	</div>
+		<h:commandButton value="Buscar" action="#{signosBean.cc}" class="btn btn-danger btn block"/>
 		
 		<!-- <h:commandButton value="Iva" action="#{facturaDetaBean.calcularIva()}" />
 			-->

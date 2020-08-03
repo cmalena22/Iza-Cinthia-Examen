@@ -88,6 +88,10 @@
 				class="form-control">
 				<f:selectItems name="item" value="#{pacienteBean.listPaciente}"
 					class="form-control" />
+					
+					<f:ajax event="change" listener="#{pacienteBean.add}"
+					render="idList2 idList3 idList4  	
+					" execute="@this" />
 			</h:selectOneMenu>
 		</div>
 	&nbsp;
@@ -101,29 +105,25 @@
 			<div class="form-group">
 				<label class="col-lg-6 control-label">Nombre: <br></br>
 					<div class="col-lg-4">
-						<h:outputText size="10" value="#{pacienteBean.nombre}"
+						<h:outputText id="idList2" size="10" value="#{pacienteBean.nombre}"
 							class="form-control" />
 					</div></label>
 			</div>
 			<div class="form-group">
 				<label class="col-lg-6 control-label">Apellido: <br></br>
 					<div class="col-lg-4">
-						<h:outputText size="10" value="#{pacienteBean.apellidos}"
+						<h:outputText id="idList3" size="10" value="#{pacienteBean.apellidos}"
 							class="form-control" />
 					</div></label>
 			</div>
 			<div class="form-group">
 				<label class="col-lg-6 control-label">Direccion: <br></br>
 					<div class="col-lg-4">
-						<h:outputText size="10" value="#{pacienteBean.direccion}"
+						<h:outputText id="idList4" size="10" value="#{pacienteBean.direccion}"
 							class="form-control" />
 					</div></label>
 			</div>
-
-
-
-	
-			</div>
+		</div>
 		<h:commandButton value="Buscar" action="#{pacienteBean.add}"
 			class="btn btn-danger btn block" />
 				

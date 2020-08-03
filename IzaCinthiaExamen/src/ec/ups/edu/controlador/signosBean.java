@@ -7,16 +7,21 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.annotation.FacesConfig;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Named;
 
 import org.eclipse.persistence.annotations.PrivateOwned;
 import org.jboss.weld.context.ejb.Ejb;
 
+import ec.ups.edu.ejb.AlergiaFacade;
 import ec.ups.edu.ejb.CitaFacade;
 import ec.ups.edu.ejb.EnfermedadesPreviasFacade;
 import ec.ups.edu.ejb.SignosVitalesFacade;
 import ec.ups.edu.ejb.SintomasFacade;
+import ec.ups.edu.modelos.Alergias;
 import ec.ups.edu.modelos.Citas;
+import ec.ups.edu.modelos.EnfermedadesPrevias;
+import ec.ups.edu.modelos.Paciente;
 import ec.ups.edu.modelos.SignosVitales;
 import ec.ups.edu.modelos.Sintomas;
 
@@ -32,7 +37,7 @@ public class signosBean implements Serializable {
 	@EJB
 	private CitaFacade ejCitaFacade;
 	@EJB
-	private SignosVitalesFacade ejbFacade;
+	private AlergiaFacade ejbFacade;
 	@EJB
 	private SintomasFacade ejbSintomas;
 	@EJB
@@ -51,7 +56,8 @@ public class signosBean implements Serializable {
 	private String enfermedades;
 	private String sintomas;
 	
-	
+	private Paciente pa;
+	private SignosVitales s;
 	//cliente
 	
 	private String cedula;
@@ -59,11 +65,19 @@ public class signosBean implements Serializable {
 	private String apellidos;
 	private String telefono;
 	private String direccion;
+	private Alergias a;
+	private Sintomas sin;
+	private EnfermedadesPrevias enf;
 	
 	private List<SignosVitales>listSignos;
 	@PostConstruct
 	public void init() {	
 		listSignos=ejSignosFacade.findAll();
+		this.pa= new Paciente();
+		this.s= new SignosVitales();
+		this.a=new Alergias();
+		this.sin= new Sintomas();
+		this.enf=new EnfermedadesPrevias();
 	}
 	public SignosVitalesFacade getEjSignosFacade() {
 		return ejSignosFacade;
@@ -108,16 +122,60 @@ public class signosBean implements Serializable {
 		this.listSignos = listSignos;
 	}
 	
-	
+	public AlergiaFacade getEjbFacade() {
+		return ejbFacade;
+	}
+	public void setEjbFacade(AlergiaFacade ejbFacade) {
+		this.ejbFacade = ejbFacade;
+	}
+	public Alergias getA() {
+		return a;
+	}
+	public void setA(Alergias a) {
+		this.a = a;
+	}
+	public Sintomas getSin() {
+		return sin;
+	}
+	public void setSin(Sintomas sin) {
+		this.sin = sin;
+	}
+	public EnfermedadesPrevias getEnf() {
+		return enf;
+	}
+	public void setEnf(EnfermedadesPrevias enf) {
+		this.enf = enf;
+	}
+	public SintomasFacade getEjbSintomas() {
+		return ejbSintomas;
+	}
+	public void setEjbSintomas(SintomasFacade ejbSintomas) {
+		this.ejbSintomas = ejbSintomas;
+	}
+	public EnfermedadesPreviasFacade getEjbEnfermedadesFacade() {
+		return ejbEnfermedadesFacade;
+	}
+	public void setEjbEnfermedadesFacade(EnfermedadesPreviasFacade ejbEnfermedadesFacade) {
+		this.ejbEnfermedadesFacade = ejbEnfermedadesFacade;
+	}
+	public Paciente getPa() {
+		return pa;
+	}
+	public void setPa(Paciente pa) {
+		this.pa = pa;
+	}
+	public SignosVitales getS() {
+		return s;
+	}
+	public void setS(SignosVitales s) {
+		this.s = s;
+	}
 	public String getCita() {
 		return cita;
 	}
 	public void setCita(String cita) {
 		this.cita = cita;
 	}
-	
-	
-	
 	public String getAlergia() {
 		return alergia;
 	}
@@ -162,9 +220,6 @@ public class signosBean implements Serializable {
 	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
-	
-	
-	
 	public String getCedula() {
 		return cedula;
 	}
@@ -195,7 +250,8 @@ public class signosBean implements Serializable {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-	public String add() {
+	
+	public String add(AjaxBehaviorEvent event) {
 		System.out.println("Presion"+this.precion);
 		System.out.println("Frecuencia c"+this.frecuenciaC);
 		System.out.println("Frreciencia R0"+this.frecuenciaR);
@@ -217,11 +273,22 @@ public class signosBean implements Serializable {
 		this.apellidos=c.getPaciente().getApellidos();
 		this.direccion=c.getPaciente().getDireccion();
 		
+		 s= new SignosVitales(this.precion, this.frecuenciaC, this.frecuenciaR,
+				this.temperatura,this.saturacion,c.getPaciente());
+		 a =  new Alergias(this.alergia,c.getPaciente());
+		 enf =  new EnfermedadesPrevias(this.enfermedades,c.getPaciente());	
+		sin = new Sintomas(this.sintomas,c.getPaciente());
 		
 		return null;
 	}
-	private void agregar () {
+	public String cc()
+	{
+		
+		ejbEnfermedadesFacade.create(enf);
+		ejbFacade.create(a);
+		ejbSintomas.create(sin);
+		ejSignosFacade.create(s);
+		return null;
 		
 	}
-	
 }

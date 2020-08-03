@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.annotation.FacesConfig;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Named;
 
 import ec.ups.edu.ejb.CitaFacade;
@@ -157,7 +158,7 @@ public class PacienteBean implements Serializable {
 		this.direccion = direccion;
 	}
 
-	public String add() {
+	public String add(AjaxBehaviorEvent event) {
 		
 		System.out.println("fecha"+this.fecha);
 		System.out.println("hor"+this.hora);
